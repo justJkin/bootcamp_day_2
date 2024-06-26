@@ -1,8 +1,10 @@
 <template>
     <div>
+        <h2 class="text-blue-600">Wpisy na bloga: </h2>
         <button @click="pobierzWpisy">odswiez</button>
-        elo 
-        {{ wpisy }}
+        <div v-for="wpis in wpisy">
+            <p>{{ wpis }}</p>
+        </div>
         <input v-model="nowyBlog" type="text">
         <button @click="dodajWpis">dodaj</button>
     </div>
@@ -25,5 +27,9 @@ import { day_2_backend } from 'declarations/day_2_backend/index';
                await day_2_backend.dodaj_wpis(this.nowyBlog);
             }
         },
+
+        async mounted(){
+            this.pobierzWpisy;
+        }
     }
 </script>
